@@ -1,16 +1,59 @@
-/**
- * Layout component that queries for data
- * with Gatsby's useStaticQuery component
- *
- * See: https://www.gatsbyjs.org/docs/use-static-query/
- */
+import React from 'react'
+import PropTypes from 'prop-types'
+import { useStaticQuery, graphql } from 'gatsby'
+import styled, { createGlobalStyle } from 'styled-components'
+import reset from 'styled-reset'
 
-import React from "react"
-import PropTypes from "prop-types"
-import { useStaticQuery, graphql } from "gatsby"
+import Header from './header'
+import Footer from './footer'
 
-import Header from "./header"
-import "./layout.css"
+const GlobalStyle = createGlobalStyle`
+${reset}
+html,
+  body {
+    box-sizing: border-box;
+    font-family: 'Lato', sans-serif;
+  }
+  html {
+    font-size: 17px;
+  }
+  @media (max-width: 900px) {
+  html { font-size: 15px; }
+  }
+  @media (max-width: 400px) {
+    html { font-size: 13px; }
+  }
+  main {
+    padding-bottom: 2.5rem;    /* Footer height */
+  }
+  h1 {
+    font-size: 2.5rem;
+  }
+  h2 {
+    font-size: 2rem;
+  }
+  h3 {
+    font-size: 1.5rem;
+  }
+  *,
+  *:before,
+  *:after {
+    box-sizing: inherit;
+  }
+  a {
+    text-decoration: none;
+    color: #FFF;
+    outline: none;
+  }
+  input, textarea, button {
+    font-family: inherit;
+  }
+`
+
+const Wrapper = styled.div`
+  position: relative;
+  min-height: 100vh;
+`
 
 const Layout = ({ children }) => {
   const data = useStaticQuery(graphql`
@@ -24,23 +67,12 @@ const Layout = ({ children }) => {
   `)
 
   return (
-    <>
+    <Wrapper>
+      <GlobalStyle />
       <Header siteTitle={data.site.siteMetadata.title} />
-      <div
-        style={{
-          margin: `0 auto`,
-          maxWidth: 960,
-          padding: `0 1.0875rem 1.45rem`,
-        }}
-      >
-        <main>{children}</main>
-        <footer>
-          © {new Date().getFullYear()}, Built with
-          {` `}
-          <a href="https://www.gatsbyjs.org">Gatsby</a>
-        </footer>
-      </div>
-    </>
+      <main>{children}</main>
+      <Footer />
+    </Wrapper>
   )
 }
 

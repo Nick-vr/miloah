@@ -4,11 +4,11 @@ import { Link } from 'gatsby'
 import Layout from '../components/layout'
 import SEO from '../components/seo'
 
-const IndexPage = () => (
+const Contact = () => (
   <Layout>
-    <SEO title="Home" />
-    <h1>Hi</h1>
+    <SEO title="Contact" />
+    <h1>Contact</h1>
   </Layout>
 )
 
-export default IndexPage
+export default Contact
