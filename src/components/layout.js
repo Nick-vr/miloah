@@ -42,7 +42,7 @@ html,
   }
   a {
     text-decoration: none;
-    color: #FFF;
+    color: #000;
     outline: none;
   }
   input, textarea, button {

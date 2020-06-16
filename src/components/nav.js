@@ -3,11 +3,12 @@ import { Link } from 'gatsby'
 import styled from 'styled-components'
 
 import LogoText from './logoText'
+import { navLeft, navRight } from '../utils/navlist'
 
 const StickyNav = styled.nav`
   z-index: 100;
   display: flex;
-  justify-content: center;
+  justify-content: space-evenly;
   align-items: center;
   text-align: center;
   height: 4rem;
@@ -27,45 +28,27 @@ const StickyNav = styled.nav`
         text-decoration-thickness: 100px;
         &:hover {
           cursor: pointer;
-          /* background-color: #000; */
-          /* color: #fff; */
-          &::first-letter {
-            text-transform: uppercase;
-          }
         }
       }
     }
   }
 `
 
-const navList = [
-  {
-    name: 'Home',
-    link: '/',
-  },
-  {
-    name: 'Over Ons',
-    link: '/over-ons',
-  },
-  {
-    name: 'Behandelingen',
-    link: '/behandelingen',
-  },
-  {
-    name: `Foto's`,
-    link: '/fotos',
-  },
-  {
-    name: 'Prijslijst',
-    link: '/prijslijst',
-  },
-  {
-    name: 'Contact',
-    link: '/contact',
-  },
-]
+const navLeftItems = navLeft.map((item, index) => (
+  <li key={index}>
+    <Link
+      to={item.link}
+      activeStyle={{
+        textDecoration: 'underline',
+        textDecorationColor: '#f2d7e0',
+      }}
+    >
+      {item.name}
+    </Link>
+  </li>
+))
 
-const navListItems = navList.map((item, index) => (
+const navRightItems = navRight.map((item, index) => (
   <li key={index}>
     <Link
       to={item.link}
@@ -80,12 +63,13 @@ const navListItems = navList.map((item, index) => (
 ))
 
 const Nav = () => (
-  <>
-    <StickyNav>
+  <StickyNav>
+    <ul>{navLeftItems}</ul>
+    <Link to="/">
       <LogoText />
-      <ul>{navListItems}</ul>
-    </StickyNav>
-  </>
+    </Link>
+    <ul>{navRightItems}</ul>
+  </StickyNav>
 )
 
 export default Nav
