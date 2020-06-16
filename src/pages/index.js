@@ -10,7 +10,7 @@ import Mouth from '../components/images/mouth'
 const IndexPage = () => (
   <Layout>
     <SEO title="Home" />
-    <h1>Hi</h1>
+    <h1>Hio</h1>
     <Mouth />
   </Layout>
 )
