@@ -25,6 +25,11 @@ const StyledFacebook = styled(FacebookF)`
 const StyledInstagram = styled(Instagram)`
   height: 20px;
   opacity: 0.4;
+  transition: color 0.2s ease-in-out;
+
+  &:hover {
+    color: white;
+  }
 `
 
 const Social = () => (

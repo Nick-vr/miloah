@@ -24,10 +24,11 @@ const StickyNav = styled.nav`
         font-family: 'Montserrat', sans-serif;
         color: black;
         font-size: 1rem;
-        transition: all 0.5s ease-in-out;
-        text-decoration-thickness: 100px;
+        transition: all 0.4s ease-in-out;
+        border-bottom: 1px solid transparent;
         &:hover {
           cursor: pointer;
+          border-bottom: 1px solid #f2d7e0;
         }
       }
     }
